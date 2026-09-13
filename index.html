@@ -1,0 +1,702 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Proposal ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+
+            background:
+                linear-gradient(135deg, #ffe4ec, #fff5f8);
+
+            overflow: hidden;
+        }
+
+        /* Main Card */
+        .card {
+            width: 90%;
+            max-width: 430px;
+
+            background: rgba(255, 255, 255, 0.96);
+
+            padding: 35px 25px;
+
+            border-radius: 25px;
+
+            text-align: center;
+
+            box-shadow:
+                0 15px 45px rgba(0, 0, 0, 0.12);
+
+            position: relative;
+
+            z-index: 10;
+        }
+
+        /* Heart */
+        .heart {
+            font-size: 65px;
+
+            animation: heartbeat 1.2s infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        /* Heading */
+        h1 {
+            margin: 15px 0;
+
+            color: #e91e63;
+
+            font-size: 30px;
+        }
+
+        /* Message */
+        .message {
+            color: #555;
+
+            line-height: 1.7;
+
+            margin-bottom: 25px;
+
+            font-size: 16px;
+        }
+
+        /* Buttons Area */
+        .buttons {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 15px;
+
+            position: relative;
+
+            height: 60px;
+        }
+
+        /* All Buttons */
+        button {
+            border: none;
+
+            padding: 13px 28px;
+
+            border-radius: 30px;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+        /* YES */
+        .yes {
+            background: #e91e63;
+
+            color: white;
+
+            box-shadow:
+                0 5px 15px rgba(233, 30, 99, 0.25);
+        }
+
+        .yes:hover {
+            transform: scale(1.08);
+
+            background: #d81b60;
+        }
+
+        /* NO */
+        .no {
+            background: #eeeeee;
+
+            color: #444;
+
+            position: relative;
+
+            transition: transform 0.25s ease;
+        }
+
+        /* Other Option */
+        .other {
+            margin-top: 20px;
+
+            background: transparent;
+
+            color: #e91e63;
+
+            text-decoration: underline;
+
+            padding: 8px;
+        }
+
+        .other:hover {
+            color: #ad1457;
+        }
+
+        /* Other Option Box */
+        .other-box {
+            display: none;
+
+            margin-top: 20px;
+
+            padding: 18px;
+
+            background: #fff0f5;
+
+            border-radius: 18px;
+
+            animation: showBox 0.3s ease;
+        }
+
+        @keyframes showBox {
+
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Options */
+        .option {
+            width: 100%;
+
+            margin: 8px 0;
+
+            background: white;
+
+            color: #333;
+
+            border: 1px solid #ffd0df;
+
+            line-height: 1.4;
+        }
+
+        .option:hover {
+            background: #ffe1eb;
+
+            transform: translateY(-2px);
+        }
+
+        /* Result */
+        .result {
+            display: none;
+
+            animation: resultShow 0.5s ease;
+        }
+
+        @keyframes resultShow {
+
+            from {
+                opacity: 0;
+
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+
+                transform: scale(1);
+            }
+        }
+
+        .result h2 {
+            color: #e91e63;
+
+            margin: 20px 0 10px;
+
+            font-size: 30px;
+        }
+
+        .result p {
+            color: #555;
+
+            line-height: 1.6;
+
+            font-size: 16px;
+        }
+
+        /* Floating Hearts */
+        .floating-heart {
+            position: absolute;
+
+            bottom: -30px;
+
+            font-size: 20px;
+
+            animation: floatUp 5s linear infinite;
+
+            opacity: 0.7;
+
+            z-index: 1;
+        }
+
+        @keyframes floatUp {
+
+            from {
+                transform: translateY(0);
+
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.8;
+            }
+
+            to {
+                transform: translateY(-110vh);
+
+                opacity: 0;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 500px) {
+
+            .card {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+
+            .heart {
+                font-size: 55px;
+            }
+
+            button {
+                font-size: 14px;
+
+                padding: 12px 22px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- Main Card -->
+    <div class="card" id="card">
+
+
+        <!-- Proposal Section -->
+        <div id="proposal">
+
+            <div class="heart">
+                ❤️
+            </div>
+
+
+            <h1>
+                I Have Something to Ask You...
+            </h1>
+
+
+            <p class="message">
+
+                I've been wanting to tell you something
+                for a while... ❤️
+
+                <br><br>
+
+                Will you accept my proposal?
+
+            </p>
+
+
+            <!-- YES / NO -->
+            <div class="buttons">
+
+                <button
+                    class="yes"
+                    onclick="accepted()">
+
+                    YES ❤️
+
+                </button>
+
+
+                <button
+                    class="no"
+                    id="noBtn">
+
+                    NO 😜
+
+                </button>
+
+            </div>
+
+
+            <!-- Other Option -->
+            <button
+                class="other"
+                onclick="showOther()">
+
+                Other Option
+
+            </button>
+
+
+            <!-- Other Options Box -->
+            <div
+                class="other-box"
+                id="otherBox">
+
+
+                <p style="margin-bottom: 12px;">
+
+                    So, what's your answer? 😊
+
+                </p>
+
+
+                <!-- Option 1 -->
+                <button
+                    class="option"
+                    onclick="acceptedOther()">
+
+                    1. I accept your proposal ❤️
+
+                </button>
+
+
+                <!-- Option 2 -->
+                <button
+                    class="option"
+                    onclick="notRejecting()">
+
+                    2. No, I am not rejecting your proposal. ❤️
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- Result Section -->
+        <div
+            class="result"
+            id="result">
+
+
+            <div class="heart">
+                💖
+            </div>
+
+
+            <h2 id="resultTitle">
+            </h2>
+
+
+            <p id="resultText">
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+    <script>
+
+
+        /* =========================
+           NO BUTTON
+        ========================= */
+
+        const noBtn =
+            document.getElementById("noBtn");
+
+
+        noBtn.addEventListener(
+            "mouseenter",
+            moveNo
+        );
+
+
+        noBtn.addEventListener(
+            "touchstart",
+            function (e) {
+
+                e.preventDefault();
+
+                moveNo();
+
+            }
+        );
+
+
+        function moveNo() {
+
+            const card =
+                document.getElementById("card");
+
+
+            const maxX =
+                Math.max(
+                    80,
+                    card.clientWidth / 2 - 90
+                );
+
+
+            const maxY = 120;
+
+
+            const x =
+                Math.random() * (maxX * 2) - maxX;
+
+
+            const y =
+                Math.random() * (maxY * 2) - maxY;
+
+
+            noBtn.style.transform =
+                `translate(${x}px, ${y}px)`;
+
+        }
+
+
+        /* =========================
+           OTHER OPTION
+        ========================= */
+
+        function showOther() {
+
+            const box =
+                document.getElementById("otherBox");
+
+
+            if (box.style.display === "block") {
+
+                box.style.display = "none";
+
+            } else {
+
+                box.style.display = "block";
+
+            }
+
+        }
+
+
+        /* =========================
+           NORMAL YES
+        ========================= */
+
+        function accepted() {
+
+            document.getElementById(
+                "proposal"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "result"
+            ).style.display = "block";
+
+
+            document.getElementById(
+                "resultTitle"
+            ).innerText =
+                "Yay! ❤️";
+
+
+            document.getElementById(
+                "resultText"
+            ).innerText =
+                "You accepted my proposal! 🥰💖";
+
+
+            startCelebration();
+
+        }
+
+
+        /* =========================
+           OTHER OPTION - ACCEPT
+        ========================= */
+
+        function acceptedOther() {
+
+            document.getElementById(
+                "proposal"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "result"
+            ).style.display = "block";
+
+
+            document.getElementById(
+                "resultTitle"
+            ).innerText =
+                "Thank You! ❤️";
+
+
+            document.getElementById(
+                "resultText"
+            ).innerText =
+                "You chose Option 1 — You accepted my proposal! 💖🥰";
+
+
+            startCelebration();
+
+        }
+
+
+        /* =========================
+           OTHER OPTION - NOT REJECTING
+        ========================= */
+
+        function notRejecting() {
+
+            document.getElementById(
+                "proposal"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "result"
+            ).style.display = "block";
+
+
+            document.getElementById(
+                "resultTitle"
+            ).innerText =
+                "Aww! ❤️";
+
+
+            document.getElementById(
+                "resultText"
+            ).innerText =
+                "You chose Option 2 — You are not rejecting my proposal. 💖🥰";
+
+
+            startCelebration();
+
+        }
+
+
+        /* =========================
+           FLOATING HEARTS
+        ========================= */
+
+        function createHeart() {
+
+            const heart =
+                document.createElement("div");
+
+
+            heart.className =
+                "floating-heart";
+
+
+            const hearts = [
+                "❤️",
+                "💖",
+                "💕",
+                "💗",
+                "💓"
+            ];
+
+
+            heart.innerText =
+                hearts[
+                    Math.floor(
+                        Math.random() *
+                        hearts.length
+                    )
+                ];
+
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+
+            heart.style.animationDuration =
+                (3 + Math.random() * 4) + "s";
+
+
+            document.body.appendChild(heart);
+
+
+            setTimeout(
+                () => heart.remove(),
+                7000
+            );
+
+        }
+
+
+        setInterval(
+            createHeart,
+            700
+        );
+
+
+        /* =========================
+           EXTRA CELEBRATION
+        ========================= */
+
+        function startCelebration() {
+
+            for (
+                let i = 0;
+                i < 25;
+                i++
+            ) {
+
+                setTimeout(
+                    createHeart,
+                    i * 80
+                );
+
+            }
+
+        }
+
+
+    </script>
+
+</body>
+</html>
+```
