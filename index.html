@@ -1,11 +1,10 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>My Proposal ❤️</title>
+    <title>A Little Question ❤️</title>
 
     <style>
         * {
@@ -16,171 +15,177 @@
 
         body {
             min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #fff0f5, #ffe4ec, #fff);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: Arial, sans-serif;
-
-            background:
-                linear-gradient(135deg, #ffe4ec, #fff5f8);
-
-            overflow: hidden;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        /* Main Card */
+        /* Background glow */
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.35;
+            z-index: -1;
+        }
+
+        body::before {
+            background: #ff4f87;
+            top: -100px;
+            left: -100px;
+        }
+
+        body::after {
+            background: #ff9fba;
+            bottom: -100px;
+            right: -100px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            padding: 20px;
+        }
+
         .card {
-            width: 90%;
-            max-width: 430px;
-
-            background: rgba(255, 255, 255, 0.96);
-
-            padding: 35px 25px;
-
-            border-radius: 25px;
-
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 30px;
+            padding: 45px 30px;
             text-align: center;
-
             box-shadow:
-                0 15px 45px rgba(0, 0, 0, 0.12);
+                0 20px 60px rgba(255, 62, 117, 0.18),
+                0 5px 20px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+            animation: cardAppear 0.8s ease;
+        }
 
-            position: relative;
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
 
-            z-index: 10;
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         /* Heart */
         .heart {
-            font-size: 65px;
-
+            font-size: 70px;
+            display: inline-block;
             animation: heartbeat 1.2s infinite;
+            margin-bottom: 10px;
         }
 
         @keyframes heartbeat {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: scale(1);
             }
 
             50% {
-                transform: scale(1.15);
+                transform: scale(1.18);
             }
         }
 
-        /* Heading */
+        .subtitle {
+            color: #ff3d7f;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
         h1 {
-            margin: 15px 0;
-
-            color: #e91e63;
-
-            font-size: 30px;
+            color: #222;
+            font-size: 42px;
+            margin-bottom: 20px;
         }
 
-        /* Message */
         .message {
-            color: #555;
-
+            color: #666;
+            font-size: 17px;
             line-height: 1.7;
-
-            margin-bottom: 25px;
-
-            font-size: 16px;
+            margin-bottom: 30px;
         }
 
-        /* Buttons Area */
+        /* Buttons */
         .buttons {
             display: flex;
-
             justify-content: center;
-
             align-items: center;
-
-            gap: 15px;
-
+            gap: 18px;
+            flex-wrap: wrap;
+            min-height: 65px;
             position: relative;
-
-            height: 60px;
         }
 
-        /* All Buttons */
         button {
             border: none;
-
-            padding: 13px 28px;
-
-            border-radius: 30px;
-
-            font-size: 16px;
-
             cursor: pointer;
-
-            transition: 0.25s;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 50px;
+            padding: 15px 28px;
+            transition: 0.25s ease;
+            font-family: inherit;
         }
 
-        /* YES */
-        .yes {
-            background: #e91e63;
-
+        .yes-btn {
+            background: linear-gradient(135deg, #ff2f75, #ff5b94);
             color: white;
-
-            box-shadow:
-                0 5px 15px rgba(233, 30, 99, 0.25);
+            box-shadow: 0 8px 20px rgba(255, 47, 117, 0.3);
         }
 
-        .yes:hover {
-            transform: scale(1.08);
-
-            background: #d81b60;
+        .yes-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(255, 47, 117, 0.4);
         }
 
-        /* NO */
-        .no {
-            background: #eeeeee;
-
-            color: #444;
-
+        .no-btn {
+            background: #f1f1f1;
+            color: #555;
             position: relative;
-
-            transition: transform 0.25s ease;
+            transition: transform 0.08s linear;
         }
 
-        /* Other Option */
-        .other {
+        .no-btn:hover {
+            background: #e8e8e8;
+        }
+
+        /* Other option */
+        .other-btn {
             margin-top: 20px;
-
-            background: transparent;
-
-            color: #e91e63;
-
-            text-decoration: underline;
-
-            padding: 8px;
+            background: white;
+            color: #ff3478;
+            border: 2px solid #ff3478;
         }
 
-        .other:hover {
-            color: #ad1457;
+        .other-btn:hover {
+            background: #ff3478;
+            color: white;
+            transform: translateY(-2px);
         }
 
-        /* Other Option Box */
-        .other-box {
+        /* Other options box */
+        #otherOptions {
             display: none;
-
-            margin-top: 20px;
-
-            padding: 18px;
-
-            background: #fff0f5;
-
-            border-radius: 18px;
-
-            animation: showBox 0.3s ease;
+            margin-top: 25px;
+            animation: fadeDown 0.5s ease;
         }
 
-        @keyframes showBox {
-
+        @keyframes fadeDown {
             from {
                 opacity: 0;
-                transform: translateY(-10px);
+                transform: translateY(-15px);
             }
 
             to {
@@ -189,514 +194,413 @@
             }
         }
 
-        /* Options */
-        .option {
-            width: 100%;
-
-            margin: 8px 0;
-
-            background: white;
-
-            color: #333;
-
-            border: 1px solid #ffd0df;
-
-            line-height: 1.4;
+        .option-title {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 15px;
         }
 
-        .option:hover {
-            background: #ffe1eb;
+        .option-btn {
+            width: 100%;
+            margin: 8px 0;
+            background: #fff0f5;
+            color: #ff3478;
+            border: 1px solid #ffb1c8;
+        }
 
-            transform: translateY(-2px);
+        .option-btn:hover {
+            background: #ff3478;
+            color: white;
+            transform: scale(1.02);
         }
 
         /* Result */
-        .result {
+        #result {
             display: none;
-
-            animation: resultShow 0.5s ease;
+            margin-top: 30px;
+            padding: 35px 20px;
+            border-radius: 25px;
+            background: linear-gradient(
+                135deg,
+                #fff0f5,
+                #ffffff,
+                #ffe6ee
+            );
+            border: 2px solid rgba(255, 64, 125, 0.15);
+            animation: resultPop 0.6s ease;
         }
 
-        @keyframes resultShow {
-
-            from {
+        @keyframes resultPop {
+            0% {
                 opacity: 0;
-
-                transform: scale(0.8);
+                transform: scale(0.6);
             }
 
-            to {
-                opacity: 1;
+            70% {
+                transform: scale(1.08);
+            }
 
+            100% {
+                opacity: 1;
                 transform: scale(1);
             }
         }
 
-        .result h2 {
-            color: #e91e63;
-
-            margin: 20px 0 10px;
-
-            font-size: 30px;
+        #result h2 {
+            color: #ff3478;
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            line-height: 1.2;
         }
 
-        .result p {
+        #result p {
             color: #555;
-
-            line-height: 1.6;
-
-            font-size: 16px;
+            font-size: 23px;
+            font-weight: 600;
+            line-height: 1.5;
         }
 
-        /* Floating Hearts */
+        /* Floating hearts */
         .floating-heart {
-            position: absolute;
-
+            position: fixed;
             bottom: -30px;
-
-            font-size: 20px;
-
-            animation: floatUp 5s linear infinite;
-
-            opacity: 0.7;
-
-            z-index: 1;
+            font-size: 22px;
+            pointer-events: none;
+            animation: floatHeart 5s linear forwards;
+            z-index: 0;
         }
 
-        @keyframes floatUp {
-
-            from {
-                transform: translateY(0);
-
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) rotate(0deg);
                 opacity: 0;
             }
 
-            20% {
-                opacity: 0.8;
+            15% {
+                opacity: 1;
             }
 
-            to {
-                transform: translateY(-110vh);
-
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
                 opacity: 0;
             }
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #aaa;
+            font-size: 13px;
         }
 
         /* Mobile */
-        @media (max-width: 500px) {
+        @media (max-width: 600px) {
 
-            .card {
-                padding: 30px 20px;
+            .container {
+                padding: 15px;
             }
 
-            h1 {
-                font-size: 26px;
+            .card {
+                padding: 35px 20px;
+                border-radius: 25px;
             }
 
             .heart {
-                font-size: 55px;
+                font-size: 60px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .message {
+                font-size: 15px;
             }
 
             button {
-                font-size: 14px;
+                font-size: 15px;
+                padding: 13px 23px;
+            }
 
-                padding: 12px 22px;
+            #result {
+                padding: 30px 15px;
+            }
+
+            #result h2 {
+                font-size: 38px;
+            }
+
+            #result p {
+                font-size: 19px;
             }
         }
     </style>
 </head>
 
-
 <body>
 
+    <div class="container">
 
-    <!-- Main Card -->
-    <div class="card" id="card">
+        <div class="card">
 
+            <div class="heart">❤️</div>
 
-        <!-- Proposal Section -->
-        <div id="proposal">
-
-            <div class="heart">
-                ❤️
+            <div class="subtitle">
+                A Little Question
             </div>
 
-
             <h1>
-                I Have Something to Ask You...
+                Will You Be Mine?
             </h1>
 
-
             <p class="message">
-
-                I've been wanting to tell you something
-                for a while... ❤️
-
+                There is something I've been wanting to say for a little while...
+                You are someone who makes ordinary moments feel a little more special.
+                So, I have one simple question...
                 <br><br>
-
-                Will you accept my proposal?
-
+                <strong>Will you accept my proposal? ❤️</strong>
             </p>
 
-
-            <!-- YES / NO -->
+            <!-- Main buttons -->
             <div class="buttons">
 
                 <button
-                    class="yes"
+                    class="yes-btn"
                     onclick="accepted()">
-
                     YES ❤️
-
                 </button>
 
-
                 <button
-                    class="no"
-                    id="noBtn">
-
-                    NO 😜
-
+                    class="no-btn"
+                    id="noButton"
+                    onmouseenter="moveNo()"
+                    ontouchstart="moveNo()">
+                    NO 😞
                 </button>
 
             </div>
 
-
-            <!-- Other Option -->
+            <!-- Other option -->
             <button
-                class="other"
-                onclick="showOther()">
-
-                Other Option
-
+                class="other-btn"
+                onclick="showOtherOptions()">
+                Other Option 💕
             </button>
 
+            <!-- Other options -->
+            <div id="otherOptions">
 
-            <!-- Other Options Box -->
-            <div
-                class="other-box"
-                id="otherBox">
+                <div class="option-title">
+                    Choose an option 💗
+                </div>
 
+                <button
+                    class="option-btn"
+                    onclick="acceptedOther()">
+                    I accept your proposal ❤️
+                </button>
 
-                <p style="margin-bottom: 12px;">
+                <button
+                    class="option-btn"
+                    onclick="notRejecting()">
+                    No, I am not rejecting your proposal. ❤️
+                </button>
 
-                    So, what's your answer? 😊
+            </div>
 
+            <!-- Result -->
+            <div id="result">
+
+                <h2 id="resultTitle">
+                    Thanks God! ❤️🥹
+                </h2>
+
+                <p id="resultText">
+                    Thanks for reacted me ❤️
                 </p>
 
+            </div>
 
-                <!-- Option 1 -->
-                <button
-                    class="option"
-                    onclick="acceptedOther()">
-
-                    1. I accept your proposal ❤️
-
-                </button>
-
-
-                <!-- Option 2 -->
-                <button
-                    class="option"
-                    onclick="notRejecting()">
-
-                    2. No, I am not rejecting your proposal. ❤️
-
-                </button>
-
-
+            <div class="footer">
+                Made with ❤️
             </div>
 
         </div>
-
-
-        <!-- Result Section -->
-        <div
-            class="result"
-            id="result">
-
-
-            <div class="heart">
-                💖
-            </div>
-
-
-            <h2 id="resultTitle">
-            </h2>
-
-
-            <p id="resultText">
-            </p>
-
-
-        </div>
-
 
     </div>
 
 
     <script>
 
+        /* YES button */
+        function accepted() {
 
-        /* =========================
-           NO BUTTON
-        ========================= */
+            showResult(
+                "Thanks God! ❤️🥹",
+                "Thanks for reacted me ❤️"
+            );
 
-        const noBtn =
-            document.getElementById("noBtn");
-
-
-        noBtn.addEventListener(
-            "mouseenter",
-            moveNo
-        );
-
-
-        noBtn.addEventListener(
-            "touchstart",
-            function (e) {
-
-                e.preventDefault();
-
-                moveNo();
-
-            }
-        );
-
-
-        function moveNo() {
-
-            const card =
-                document.getElementById("card");
-
-
-            const maxX =
-                Math.max(
-                    80,
-                    card.clientWidth / 2 - 90
-                );
-
-
-            const maxY = 120;
-
-
-            const x =
-                Math.random() * (maxX * 2) - maxX;
-
-
-            const y =
-                Math.random() * (maxY * 2) - maxY;
-
-
-            noBtn.style.transform =
-                `translate(${x}px, ${y}px)`;
-
+            startCelebration();
         }
 
 
-        /* =========================
-           OTHER OPTION
-        ========================= */
+        /* Other Option → Option 1 */
+        function acceptedOther() {
 
-        function showOther() {
+            showResult(
+                "Thanks God! ❤️🥹",
+                "Thanks for reacted me ❤️"
+            );
 
-            const box =
-                document.getElementById("otherBox");
+            startCelebration();
+        }
 
 
-            if (box.style.display === "block") {
+        /* Other Option → Option 2 */
+        function notRejecting() {
 
-                box.style.display = "none";
+            showResult(
+                "Thanks God! ❤️🥹",
+                "Thanks for reacted me ❤️"
+            );
+
+            startCelebration();
+        }
+
+
+        /* Show result */
+        function showResult(title, text) {
+
+            const result = document.getElementById("result");
+            const resultTitle = document.getElementById("resultTitle");
+            const resultText = document.getElementById("resultText");
+
+            resultTitle.innerHTML = title;
+            resultText.innerHTML = text;
+
+            result.style.display = "block";
+
+            result.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        }
+
+
+        /* Show Other Options */
+        function showOtherOptions() {
+
+            const otherOptions =
+                document.getElementById("otherOptions");
+
+            if (otherOptions.style.display === "block") {
+
+                otherOptions.style.display = "none";
 
             } else {
 
-                box.style.display = "block";
+                otherOptions.style.display = "block";
+
+                otherOptions.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+            }
+        }
+
+
+        /* Moving NO button */
+        function moveNo() {
+
+            const button =
+                document.getElementById("noButton");
+
+            const maxX =
+                Math.min(window.innerWidth * 0.40, 220);
+
+            const maxUp = 110;
+
+            let randomX =
+                Math.random() * (maxX * 2) - maxX;
+
+            let randomY =
+                -(Math.random() * maxUp);
+
+            button.style.transform =
+                `translate(${randomX}px, ${randomY}px)`;
+
+            setTimeout(() => {
+
+                if (button.matches(":hover")) {
+                    moveNo();
+                }
+
+            }, 100);
+        }
+
+
+        /* Touch support */
+        document
+            .getElementById("noButton")
+            .addEventListener("touchstart", function () {
+
+                moveNo();
+
+            });
+
+
+        /* Celebration */
+        function startCelebration() {
+
+            for (let i = 0; i < 30; i++) {
+
+                setTimeout(() => {
+                    createHeart();
+                }, i * 100);
 
             }
-
         }
 
 
-        /* =========================
-           NORMAL YES
-        ========================= */
-
-        function accepted() {
-
-            document.getElementById(
-                "proposal"
-            ).style.display = "none";
-
-
-            document.getElementById(
-                "result"
-            ).style.display = "block";
-
-
-            document.getElementById(
-                "resultTitle"
-            ).innerText =
-                "Yay! ❤️";
-
-
-            document.getElementById(
-                "resultText"
-            ).innerText =
-                "You accepted my proposal! 🥰💖";
-
-
-            startCelebration();
-
-        }
-
-
-        /* =========================
-           OTHER OPTION - ACCEPT
-        ========================= */
-
-        function acceptedOther() {
-
-            document.getElementById(
-                "proposal"
-            ).style.display = "none";
-
-
-            document.getElementById(
-                "result"
-            ).style.display = "block";
-
-
-            document.getElementById(
-                "resultTitle"
-            ).innerText =
-                "Thank You! ❤️";
-
-
-            document.getElementById(
-                "resultText"
-            ).innerText =
-                "You chose Option 1 — You accepted my proposal! 💖🥰";
-
-
-            startCelebration();
-
-        }
-
-
-        /* =========================
-           OTHER OPTION - NOT REJECTING
-        ========================= */
-
-        function notRejecting() {
-
-            document.getElementById(
-                "proposal"
-            ).style.display = "none";
-
-
-            document.getElementById(
-                "result"
-            ).style.display = "block";
-
-
-            document.getElementById(
-                "resultTitle"
-            ).innerText =
-                "Aww! ❤️";
-
-
-            document.getElementById(
-                "resultText"
-            ).innerText =
-                "You chose Option 2 — You are not rejecting my proposal. 💖🥰";
-
-
-            startCelebration();
-
-        }
-
-
-        /* =========================
-           FLOATING HEARTS
-        ========================= */
-
+        /* Create floating heart */
         function createHeart() {
 
             const heart =
                 document.createElement("div");
 
-
-            heart.className =
-                "floating-heart";
-
+            heart.className = "floating-heart";
 
             const hearts = [
                 "❤️",
                 "💖",
                 "💕",
                 "💗",
-                "💓"
+                "💓",
+                "💘"
             ];
 
-
-            heart.innerText =
+            heart.innerHTML =
                 hearts[
-                    Math.floor(
-                        Math.random() *
-                        hearts.length
-                    )
+                    Math.floor(Math.random() * hearts.length)
                 ];
-
 
             heart.style.left =
                 Math.random() * 100 + "vw";
 
+            heart.style.fontSize =
+                (18 + Math.random() * 25) + "px";
 
             heart.style.animationDuration =
-                (3 + Math.random() * 4) + "s";
-
+                (3 + Math.random() * 3) + "s";
 
             document.body.appendChild(heart);
 
-
-            setTimeout(
-                () => heart.remove(),
-                7000
-            );
-
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
         }
-
-
-        setInterval(
-            createHeart,
-            700
-        );
-
-
-        /* =========================
-           EXTRA CELEBRATION
-        ========================= */
-
-        function startCelebration() {
-
-            for (
-                let i = 0;
-                i < 25;
-                i++
-            ) {
-
-                setTimeout(
-                    createHeart,
-                    i * 80
-                );
-
-            }
-
-        }
-
 
     </script>
 
 </body>
 </html>
-```
